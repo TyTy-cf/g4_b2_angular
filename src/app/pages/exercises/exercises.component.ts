@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import {Dice} from "../../../models/dice";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-exercises',
   standalone: true,
-  imports: [],
+  imports: [
+    NgForOf
+  ],
   templateUrl: './exercises.component.html',
   styleUrl: './exercises.component.scss'
 })
@@ -13,7 +16,11 @@ export class ExercisesComponent {
   value: number = 0;
   dices: Dice[] = [];
 
-  constructor() {
+  throwDice(): void {
+    this.dices = [];
+    for (let i = 0; i < 5; i++) {
+      this.dices.push(new Dice());
+    }
   }
 
   increment(inc: number): void {
