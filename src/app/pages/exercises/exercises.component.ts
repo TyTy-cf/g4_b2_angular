@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Dice} from "../../../models/dice";
 
 @Component({
   selector: 'app-exercises',
@@ -10,6 +11,10 @@ import { Component } from '@angular/core';
 export class ExercisesComponent {
 
   value: number = 0;
+  dices: Dice[] = [];
+
+  constructor() {
+  }
 
   increment(inc: number): void {
     this.value += inc;
