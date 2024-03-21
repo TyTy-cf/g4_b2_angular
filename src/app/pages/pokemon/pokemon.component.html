@@ -1,0 +1,41 @@
+
+<div class="btn-group d-flex justify-content-center" *ngIf="pokeApiResponse; else empty">
+  <button class="btn btn-primary"
+          [disabled]="pokeApiResponse.previous === null"
+          (click)="fetchPokemons(pokeApiResponse?.previous)"
+  >Previous
+  </button>
+  <button class="btn btn-primary"
+          [disabled]="pokeApiResponse.next === null"
+          (click)="fetchPokemons(pokeApiResponse?.next)"
+  >Next
+  </button>
+</div>
+
+<div class="row">
+  <div class="col-3" *ngFor="let pokemon of pokemons">
+    <img class="img-fluid"
+         [src]="pokemon.sprites.other['official-artwork'].front_default"
+         [alt]="pokemon.name"
+    >
+    <p class="text-center fs-2">{{ pokemon.name|titlecase }}</p>
+    <div class="row">
+      <div *ngFor="let type of pokemon.types"
+           class="text-center col-{{ 12 / pokemon.types.length }}"
+      >
+        <img [alt]="type.type.name"
+             src="/assets/images/type/{{type.type.name}}.png"
+             class="img-fluid"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div class="spinner-border" role="status">
+  </div>
+  <span>
+      Chargement de la page...
+  </span>
+</ng-template>
