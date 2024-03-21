@@ -1,0 +1,18 @@
+
+<h1>
+  Les jeux
+</h1>
+
+<div class="row" *ngIf="items.length > 0; else empty">
+  <div class="col-4" *ngFor="let game of items">
+    <img [src]="game.thumbnailCover" class="img-fluid"/>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div class="spinner-border" role="status">
+  </div>
+  <span>
+      Chargement de la page...
+  </span>
+</ng-template>

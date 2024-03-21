@@ -21,6 +21,7 @@ export class ExercisesComponent {
     for (let i = 0; i < 5; i++) {
       this.dices.push(new Dice());
     }
+    console.log(this.dices);
   }
 
   increment(inc: number): void {
