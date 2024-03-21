@@ -1,0 +1,50 @@
+
+<div *ngIf="pokemon; else empty">
+  <div class="d-flex">
+    <h1 class="me-5">
+      {{ pokemon.name|titlecase }}
+    </h1>
+    <div class="row">
+      <div *ngFor="let type of pokemon.types"
+           class="text-center col-{{ 12 / pokemon.types.length }}"
+      >
+        <img [alt]="type.type.name"
+             src="/assets/images/type/{{type.type.name}}.png"
+             class="img-fluid"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <img class="img-fluid"
+           [src]="pokemon.sprites.other['official-artwork'].front_default"
+           [alt]="pokemon.name"
+      >
+    </div>
+    <div class="col-6">
+      <img class="img-fluid"
+           [src]="pokemon.sprites.other['official-artwork'].front_shiny"
+           [alt]="pokemon.name"
+      >
+    </div>
+  </div>
+  <div class="col-4">
+    <table class="table table-striped">
+      <tbody>
+      <tr *ngFor="let stats of pokemon.stats">
+        <th>{{stats.stat.name|uppercase}}</th>
+        <td>{{stats.base_stat}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div class="spinner-border" role="status">
+  </div>
+  <span>
+      Chargement de la page...
+  </span>
+</ng-template>

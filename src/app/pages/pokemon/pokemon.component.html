@@ -1,5 +1,10 @@
 
 <div class="btn-group d-flex justify-content-center" *ngIf="pokeApiResponse; else empty">
+  <button class="btn btn-secondary"
+          [disabled]="pokeApiResponse.previous === null"
+          (click)="fetchPokemons()"
+  >First
+  </button>
   <button class="btn btn-primary"
           [disabled]="pokeApiResponse.previous === null"
           (click)="fetchPokemons(pokeApiResponse?.previous)"
@@ -13,7 +18,10 @@
 </div>
 
 <div class="row">
-  <div class="col-3" *ngFor="let pokemon of pokemons">
+  <div class="col-lg-3 col-md-6 col-sm-12 router-link"
+       *ngFor="let pokemon of pokemons"
+       routerLink="/pokemon/{{pokemon.name}}"
+  >
     <img class="img-fluid"
          [src]="pokemon.sprites.other['official-artwork'].front_default"
          [alt]="pokemon.name"

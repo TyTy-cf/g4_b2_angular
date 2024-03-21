@@ -4,12 +4,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {PokeApiResponse} from "../../../models/poke-api/poke-api-response";
 import {NgForOf, NgIf, TitleCasePipe} from "@angular/common";
 import {Pokemon} from "../../../models/poke-api/pokemon";
-import {ApiResponse} from "../../../models/my-steam/api-response";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-pokemon',
   standalone: true,
-  imports: [HttpClientModule, NgForOf, TitleCasePipe, NgIf],
+  imports: [HttpClientModule, NgForOf, TitleCasePipe, NgIf, RouterLink],
   providers: [HttpClientService],
   templateUrl: './pokemon.component.html',
   styleUrl: './pokemon.component.scss'
